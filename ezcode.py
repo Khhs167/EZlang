@@ -1,4 +1,4 @@
-#0.2
+#0.2.1
 import string as stringmod
 import tkinter
 import sys
@@ -92,6 +92,20 @@ def execode():
                 inp = lineToWork[1][1:]
                 if ("Input()" in line):
                     inp = input()
+                if (lineToWork[1][1:].split(" ")[0] in variables.keys()):
+                    if (lineToWork[1][1:].split(" ")[1] in ["+", "-", "*", "/", "^"]):
+                        if (lineToWork[1][1:].split(" ")[2] in variables.keys()):
+                            inp = variables[lineToWork[1][1:].split(" ")[0]] + variables[lineToWork[1][1:].split(" ")[2]]
+                        else:
+                            inp = variables[lineToWork[1][1:].split(" ")[0]] + lineToWork[1][1:].split(" ")[2]
+                    else:
+                        inp = int(variables[lineToWork[1]][1:])
+                        try:
+                            inp = int(inp)
+                        except:
+                            inp = str(inp)
+                
+                #print(inp)
                 variables[''.join(lineToWork[0][0:len(lineToWork[0])-1])] = inp
                 #print(variables)
 
@@ -105,9 +119,16 @@ def execode():
                 input()
             elif "<-" in line:
                 lineToWork = line.split("<-")
+                print("lineToWork: " + lineToWork)
                 #print(lineToWork)
                 if ("Input()" in line):
                     inp = input()
+                if (lineToWork[1] in variables.keys):
+                    if (lineToWork[1][1:].split(" ")[1] in ["+", "-", "*", "/", "^"]):
+                        inp = lineToWork[1][1:].split(" ")[0] + lineToWork[1][1:].split(" ")[2]
+                    else:
+                        inp = variables[lineToWork[1]]
+                print(inp)
                 variables[''.join(lineToWork[0][0:len(lineToWork[0])-1])] = inp
                 #print(variables)
 
@@ -185,7 +206,6 @@ def execodeline(code):
     elif line == "":
         pass
     else:
-        print("." + line + ".")
         print("No program called " + line + " assuming it is okay")
         
 execode()
