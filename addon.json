@@ -1,0 +1,1 @@
+{"name":"EZlang to bash", "customtab":true,"commands":[{"name":"compile", "command":"python main.py %f", "inmenu":"true"}, {"name":"compile", "command":"python main.py about", "inmenu":"true"], "tabname":"compile", "creator":"khhs"}
