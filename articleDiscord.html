@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <title>EZlang Docs</title>
+    <meta property="og:title" content="<?= $articleName?>" />
+    <meta property="og:description" content="EZlang Documentiation Article" />
+    <meta property="og:image" content="logo.png" />
+</head>
+<body>
+    <section class="topSec">
+        <div class="logo">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="infotext">
+            <h1>EZlang docs</h1>
+            <h2>v0.2.2</h2>
+        </div>
+    </section>
+    <section class="docs">
+        <form class="explorer" method="post" action="articleRouter.php">
+            <input type="hidden" name="docReq" value="salami">
+	    <h2><a href='about.html'>About</a></h2>
+            <br>
+	    <h2><a href='articleWrite.html'>Write</a></h2>
+            <br>
+	    <h2><a href='articleDiscord.html'>Docs from discord</a></h2>
+            <?= $sidebar?>
+        </form>
+        <div class="articleSpace">
+		<h2>
+write("string") 
+<br>
+You can use write to output any string<
+<br>
+Write(a + b)
+<br>
+OR variable and calculation!
+<br>
+<br>
+
+a <- Input()
+<br>
+Defines a to be Input, a is the variable name, <- means set to, and Input is the value.
+<br>
+<br>
+Input()
+<br>
+Simply wants you to enter something and then press enter(don't ask why!)
+<br>
+<br>
+python [Syntax]
+<br>
+Runs [Syntax] (python)
+<br>
+<br>
+
+;
+<br>
+Represents EOL
+<br>
+<br>
+function hello {write("hi"):write("hello")}
+<br>
+makes a function called hello, anything in brackets {} will be run, seperate commands with a :
+<br>
+<br>
+hello()
+<br>
+calls hello, runs it's content.
+<br>
+<br>
+#
+<br>
+comment, disables the line to be run.
+<br>
+<br>
+ifless(variable, amount, exec)
+<br>
+if variable is less than amount, it will run function exec
+<br>
+<br>
+ifequal(variable, amount, exec)
+<br>
+Same as ifless, but instead of less, equal
+<br>
+<br>
+var++
+<br>
+adds one to var
+<br>
+<br>
+var--
+<br>
+removes one from var
+<br>
+<br>
+>
+<br>
+#TERMINAL, BASH AND CMD.EXE COMMANDS
+<br>
+<br>
+#**python ezcode.py**
+<br>
+<br>
+Basic run command, opens up a tkinter window for selection of file
+<br>
+<br>
+#**python ezcode.py *your-file.ez*
+<br>
+<br>
+Opens file example.ez, can be switched to any file
+		</h2>
+            <?= $article?>
+        </div>
+    </section>
+</body>
+</html>

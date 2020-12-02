@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <title>EZlang Docs</title>
+    <meta property="og:title" content="<?= $articleName?>" />
+    <meta property="og:description" content="EZlang Documentiation Article" />
+    <meta property="og:image" content="logo.png" />
+</head>
+<body>
+    <section class="topSec">
+        <div class="logo">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="infotext">
+            <h1>EZlang docs</h1>
+            <h2>v0.2.2</h2>
+        </div>
+    </section>
+    <section class="docs">
+        <form class="explorer" method="post" action="articleRouter.php">
+            <input type="hidden" name="docReq" value="salami">
+	    <h2><a href='about.html'>About</a></h2>
+            <br>
+	    <h2><a href='articleWrite.html'>Write</a></h2>
+            <br>
+	    <h2><a href='articleDiscord.html'>Docs from discord</a></h2>
+            <?= $sidebar?>
+        </form>
+        <div class="articleSpace">
+		<h2>Write([item]); is a key feature, it outputs [item], aka a string ("string") or a variable</h2>
+            <?= $article?>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+*{
+    margin: 0;
+}
+
+html
+{
+    background-color: #B00707;
+    color: white;
+    font-family: 'Source Sans Pro';
+    height: 100%;
+}
+body
+{
+    height: 100%;
+}
+.topSec
+{
+    display: grid;
+    grid-template-columns: 13vw auto;
+}
+.logo img
+{
+    width: 10vw;
+    margin: 1vw;
+}
+.infotext
+{
+    margin: 0;
+    margin-top: 2vw;
+}
+.infotext h1
+{
+    font-size: 3vw;
+    font-weight: 500;
+}
+.infotext h2
+{
+    font-weight: 400;
+    font-size: 1.3vw;
+}
+.explorer
+{
+    background-color: #131313;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
+    padding: 0;
+}
+.docButton
+{
+    width: 97%;
+    height: 2vw;
+    background-color: transparent;
+    border: none;
+    color: white;
+    filter: brightness(0.5);
+    transition: 0.2s;
+
+    margin-top: 0.5vw;
+    margin-left: 0.5vw;
+}
+.docButton:hover
+{
+    filter: brightness(10);
+    transition: 0.2s;
+}
+.spacer
+{
+    display: grid;
+    grid-template-columns: 1.5vw auto;
+}
+.docButton p
+{
+    text-align: left;
+    font-size: 1.4vw;
+}
+.arrow
+{
+    color: white;
+    background-image: url("mark.svg");
+    width: 1vw;
+    height: 1vw;
+    margin-top: 0.3vw;
+}
+.pImage
+{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.articleSpace
+{
+    background-color: #131313;
+    margin: 1vw;
+    margin-top: 0;
+    border-radius: 1vw;
+    padding: 2vw;
+    padding-top: 1vw;
+}
+.articleSpace h1
+{
+    font-size: 2.2vw;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 1vw;
+}
+.articleSpace p
+{
+    font-size: 1.5vw;
+}
+.articleSpace span
+{
+    font-family: 'Source Code Pro' !important;
+    font-size: 1.5vw;
+    background-color: #212121;
+    padding: 0.5vw;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+    display: block;
+}
+.articleSpace a
+{
+    font-size: 1.5vw;
+    color: #db6d6d;
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.articleSpace a:hover
+{
+    color: #db9696;
+}
+.whitespace
+{
+    height: 2vw;
+}
+.docs
+{
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 20vw auto;
+}
