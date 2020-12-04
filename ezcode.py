@@ -1,5 +1,6 @@
 
 #EZLANG INTERPRETER
+#Made by khhs
 
 import string as stringmod
 import tkinter
