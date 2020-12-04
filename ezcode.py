@@ -1,3 +1,6 @@
+
+#EZLANG INTERPRETER
+
 import string as stringmod
 import tkinter
 import sys
