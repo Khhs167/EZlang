@@ -1,6 +1,7 @@
 
 #EZLANG INTERPRETER
 #Made by khhs
+#For use in cmd
 
 import string as stringmod
 import tkinter
