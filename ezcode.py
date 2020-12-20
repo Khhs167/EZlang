@@ -61,23 +61,44 @@ def execLine(line):
             print(variables[line[len("Write("):len(line)-1]][0])
         elif (line[len("Write("):][0] == "\""):
             print(line[len("Write(") + 1:len(line)-2])
-    
+    elif line[:len("if[")] == "if[":
+        comparison = line[len("if["):].split("]")[0].split(",")[0]
+        if ("==" in comparison):
+            if (variables[comparison.split("==")[0]] == variables[comparison.split("==")[1]]):
+                execLine(line[len("if["):].split("]")[0].split(",")[1])
+        elif (">" in comparison):
+            if (variables[comparison.split(">")[0]] > variables[comparison.split(">")[1]]):
+                execLine(line[len("if["):].split("]")[0].split(",")[1])
+        elif ("<" in comparison):
+            if (variables[comparison.split("<")[0]] < variables[comparison.split("<")[1]]):
+                execLine(line[len("if["):].split("]")[0].split(",")[1])
+        elif ("!=" in comparison):
+            if (variables[comparison.split("!=")[0]] != variables[comparison.split("!=")[1]]):
+                execLine(line[len("if["):].split("]")[0].split(",")[1])
     elif line.split("(")[0] in variables:
         func = line.split("(")[0]
         if (variables[func][0] == "Function"):
             for funcLine in variables[func][1]:
                 execLine(funcLine)
     elif "<-" in line:
-        variables[line.split("<-")[0]] = [line.split("<-")[1]]
+        if (not "Input()" in line):
+            try:
+                variables[line.split("<-")[0]] = [int(line.split("<-")[1])]
+            except:
+                variables[line.split("<-")[0]] = [line.split("<-")[1]]
+        else:
+            variables[line.split("<-")[0]] = [input()]
     elif line[:len(line)-2] in variables and "++" in line:
         variables[line[:len(line)-2]] = [int(variables[line[:len(line)-2]][0]) + 1]
     elif line[:len(line)-2] in variables and "--" in line:
         variables[line[:len(line)-2]] = [int(variables[line[:len(line)-2]][0]) - 1]
     elif line[:len("python ")] == "python ":
         eval(line[len("python "):])
+    elif line == "stop()":
+        print("Stopping program...")
+        quit()
     else:
         print("No command called \"" + line + "\", assuming it's okay")
-
 
 for codeLine in code:
     execLine(codeLine)
