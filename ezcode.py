@@ -44,8 +44,19 @@ code = code[:len(code)-1]
 
 ### Define some important functions
 
+def noNewLine(string):
+    code2  = string.split("\n")
+    newCode = []
+    for p in code2:
+        newCode.append(p.lstrip())
+    code2 = newCode
+    code = ''.join(code2).split(";")
+    return code[:len(code)-1]
+
 def execLine(line):
     global recursion
+    global code
+    global i
     sys.setrecursionlimit(recursion)
     recursion += 1
 
@@ -97,8 +108,12 @@ def execLine(line):
     elif line == "stop()":
         print("Stopping program...")
         quit()
+    elif line[:len("use ")] == "use ":
+        for b in range(len(noNewLine(open(line[len("use "):] + ".ez", "r").read()))): 
+            code.insert(b + i, noNewLine(open(line[len("use "):] + ".ez", "r").read())[b])
     else:
         print("No command called \"" + line + "\", assuming it's okay")
-
-for codeLine in code:
-    execLine(codeLine)
+i = 0
+while i < len(code):
+    execLine(code[i])
+    i += 1
