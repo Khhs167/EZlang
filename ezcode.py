@@ -13,6 +13,12 @@ recursion = 100
 variables = {} #The variable list, contains different types
 code = [] #The script to debug
 
+### Layer system
+
+layer = 0
+layers = []
+inFuncDef = False
+
 ### Open file
 noa = len(sys.argv)
 args = sys.argv
@@ -57,13 +63,18 @@ def execLine(line):
     global recursion
     global code
     global i
+    global inFuncDef
+    global layer
+    global layers
     sys.setrecursionlimit(recursion)
     recursion += 1
 
     if(line[0] == "#"):
         return
-
     if line[:len("function ")] == "function ":
+        inFuncDef = True
+        layer+=1
+        layers.insert(layer, "function")
         variables[line[len("function "):].split("{")[0]] = []
         variables[line[len("function "):].split("{")[0]].append("Function")
         variables[line[len("function "):].split("{")[0]].append(line[len("function "):].split("{")[1].split("}")[0].split(":"))
@@ -105,12 +116,12 @@ def execLine(line):
         variables[line[:len(line)-2]] = [int(variables[line[:len(line)-2]][0]) - 1]
     elif line[:len("python ")] == "python ":
         eval(line[len("python "):])
-    elif line == "stop()":
+    elif line == "Stop()":
         print("Stopping program...")
         quit()
     elif line[:len("use ")] == "use ":
         for b in range(len(noNewLine(open(line[len("use "):] + ".ez", "r").read()))): 
-            code.insert(b + i, noNewLine(open(line[len("use "):] + ".ez", "r").read())[b])
+            code.insert(b + i + 1, noNewLine(open(line[len("use "):] + ".ez", "r").read())[b])
     else:
         print("No command called \"" + line + "\", assuming it's okay")
 i = 0
