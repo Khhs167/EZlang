@@ -1,3 +1,4 @@
+#0.2.1
 ### Startup variables, only alivalable here
 debug = True
 
