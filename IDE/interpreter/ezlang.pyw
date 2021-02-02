@@ -84,6 +84,24 @@ def RunFunc(function):
     if(function.split("(")[0] in functions.keys()):
         oldVars = variables
         params = function.split("(")[1].split(")")[0].replace(", ", ",").replace(" ,", ",").split(",")
+        if (params[0] != ""):
+            newParams = []
+            for param in params:
+                if (param in variables.keys()):
+                    newParams.append(variables[param])
+                elif("\"" in param):
+                    stringAdd = string()
+                    stringAdd.value = param.replace("\"", "").replace("\\c", ",").replace("\\n", "\n").replace("\\t", "\t")
+                    newParams.append(stringAdd)
+                elif(param.isnumeric()):
+                    numAdd = num()
+                    num.value = int(param)
+                    newParams.append(numAdd)
+                else:
+                    RunFunc(param)
+                    newParams.append(returnVal)
+            params = newParams
+
         for i in range(len(params)):
             variables[functions[function.split("(")[0]].params[i]] = params[i]
         for line in functions[function.split("(")[0]].value:
@@ -117,12 +135,12 @@ def RunFunc(function):
                     newParams.append(variables[param].value)
                 elif("\"" in param):
                     newParams.append(param.replace("\"", "").replace("\\c", ",").replace("\\n", "\n").replace("\\t", "\t"))
-                elif(param.isnumeric()):
+                elif(param.isdigit()):
                     newParams.append(int(param))
                 else:
                     RunFunc(param)
                     newParams.append(returnVal)
-            params = newParams
+            params = newParams        
         if(params[0] != ""):
             possibleRet = funcToExec(*params)
         else:
