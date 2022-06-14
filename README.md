@@ -1,5 +1,6 @@
-# EZlang
-***EZlang*** is a open source programming language made in python, and this is the main branch, the IDE updates with this.
+# EZLang Compiler - EZC
 
-# WARNING
-This thing is buggy, just sayin, i had no idea how to make a PL when i made it!
+EZC is the official EZLang compiler, and the goal with it is for it to accoording to the [EZLang 1.0 Standard]() compile to .o files or executables.
+
+***But where is the old version***
+Just take a look under the old-python branch of this repo.
